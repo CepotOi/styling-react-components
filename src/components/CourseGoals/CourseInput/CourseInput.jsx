@@ -63,8 +63,7 @@ const CourseInput = props => {
       <FormControl isInvalid={!isInputValid}>
         <label>Course Goal</label>
         <input type="text"
-          value={enteredValue} onChange={goalInputChangeHandler} placeholder={!isInputValid ? 'Please fill this input' : ''
-          } />
+          value={enteredValue} onChange={goalInputChangeHandler} placeholder={!isInputValid ? 'Please fill this input' : ''} />
       </FormControl>
       <Button type="submit">Add Goal</Button>
     </form>
