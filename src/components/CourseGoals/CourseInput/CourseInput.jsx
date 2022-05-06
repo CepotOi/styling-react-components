@@ -1,35 +1,32 @@
 import { useState } from 'react';
 
 import Button from '../../UI/Button/Button';
-import styled from 'styled-components';
-import './CourseInput.css';
+import styles from './CourseInput.module.css';
+// import styled from 'styled-components';
 
-const FormControl = styled.div`
-  margin: 0.5rem 0;
+// const FormControl = props => {
+//   return (
+//     <div className={`${styles['form-control']} ${props.className}`}>
+//       {props.children}
+//     </div>
+//   );
+// };
 
-  & label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5rem;
-    ${props => props.isInvalid && `color: red;`}
-  }
+// const StyledFormControl = styled(FormControl)`
+//   & label {
+//     ${props => props.isInvalid && `color: red;`}
+//   }
 
-  & input {
-    display: block;
-    width: 100%;
-    border: 1px solid ${props => props.isInvalid ? 'red' : '#ccc'};
-    ${props => props.isInvalid && `background-color: #f9c0c0;`}
-    font: inherit;
-    line-height: 1.5rem;
-    padding: 0 0.25rem;
-  }
+//   & input {
+//     border: 1px solid ${props => props.isInvalid ? 'red' : '#ccc'};
+//     ${props => props.isInvalid && `background-color: #f9c0c0;`}
+//   }
 
-  & input:focus {
-    outline: none;
-    background: ${props => props.isInvalid ? '#f9c0c0' : '#fad0ec'};
-    border-color: ${props => props.isInvalid ? 'red' : '#8b005d'};
-  }
-`;
+//   & input:focus {
+//     background: ${props => props.isInvalid ? '#f9c0c0' : '#fad0ec'};
+//     border-color: ${props => props.isInvalid ? 'red' : '#8b005d'};
+//   }
+// `;
 
 const CourseInput = props => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -60,11 +57,11 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl isInvalid={!isInputValid}>
+      <div className={`${styles['form-control']} ${!isInputValid && styles.invalid}`}>
         <label>Course Goal</label>
         <input type="text"
           value={enteredValue} onChange={goalInputChangeHandler} placeholder={!isInputValid ? 'Please fill this input' : ''} />
-      </FormControl>
+      </div>
       <Button type="submit">Add Goal</Button>
     </form>
   );
